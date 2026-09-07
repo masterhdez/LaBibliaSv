@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Biblia Sv</title>
+<style>__CSS__</style>
+</head>
+<body>
+<div id="app">
+  <aside id="sidebar">
+    <div class="side-brand">
+      <img src="__LOGO__" alt="">
+      <div>
+        <div class="t1">Biblia Sv</div>
+        <div class="t2">Lectora</div>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab active" data-tab="books" data-noripple=""><i class="fa">&#xf02d;</i> Libros</button>
+      <button class="tab" data-tab="marks" data-noripple=""><i class="fa">&#xf15b;</i> Marcadores</button>
+    </div>
+    <div id="books" class="panel active"></div>
+    <div id="marks" class="panel"></div>
+  </aside>
+
+  <main id="main">
+    <div class="reader">
+      <button class="navbtn" id="prevB" data-noripple="" title="Capítulo anterior"><i class="fa">&#xf053;</i></button>
+      <div class="nav-mid">
+        <div class="book" id="bookTitle">—</div>
+        <div class="chap" id="chapterLabel">—</div>
+      </div>
+      <button class="navbtn" id="nextB" data-noripple="" title="Capítulo siguiente"><i class="fa">&#xf054;</i></button>
+      <div class="tools">
+        <select class="select" id="versionSel" title="Versión de la Biblia"></select>
+        <button class="tool" id="btnSearch" data-noripple="" title="Buscar"><i class="fa">&#xf002;</i></button>
+        <button class="tool" id="btnSettings" data-noripple="" title="Ajustes"><i class="fa">&#xf013;</i></button>
+        <button class="tool" id="btnFont" data-noripple=""><i class="fa">&#xf031;</i></button>
+        <button class="tool" id="btnSticker" data-noripple=""><i class="fa">&#xf03e;</i></button>
+        <button class="tool" id="btnTheme" data-noripple=""><i class="fa">&#xf186;</i></button>
+      </div>
+    </div>
+
+    <div id="scroll"></div>
+  </main>
+</div>
+
+<button id="fab" data-noripple="" title="Buscar en la Biblia"><i class="fa">&#xf002;</i></button>
+
+<div id="actions">
+  <span class="ref" id="actRef">—</span>
+  <button class="abtn" id="btnCopy" data-noripple="" title="Copiar"><i class="fa">&#xf0c5;</i></button>
+  <button class="abtn" id="btnShare" data-noripple="" title="Compartir / Sticker"><i class="fa">&#xf1e0;</i></button>
+  <button class="abtn" id="btnHl" data-noripple="" title="Resaltar"><i class="fa">&#xf591;</i></button>
+  <button class="abtn" id="btnNote" data-noripple="" title="Nota"><i class="fa">&#xf303;</i></button>
+  <button class="abtn" id="btnMark" data-noripple="" title="Marcador"><i class="fa">&#xf02e;</i></button>
+  <button class="abtn" id="btnClear" data-noripple="" title="Quitar resaltado" style="display:none"><i class="fa">&#xf2ed;</i></button>
+</div>
+
+<div class="modal-veil" id="hlModal">
+  <div class="modal">
+    <div class="modal-head"><h3>Resaltar versículo</h3><button class="mclose" data-noripple=""><i class="fa">&#xf00d;</i></button></div>
+    <div class="swatch-row" id="hlPalette">
+      <button class="swatch no" data-hl="none" data-noripple=""><i class="fa">&#xf00d;</i></button>
+      <button class="swatch" data-hl="yellow" style="background:#FFE9A8" data-noripple=""></button>
+      <button class="swatch" data-hl="green" style="background:#9ED3AE" data-noripple=""></button>
+      <button class="swatch" data-hl="blue" style="background:#9FC4E8" data-noripple=""></button>
+      <button class="swatch" data-hl="pink" style="background:#EEB3D0" data-noripple=""></button>
+      <button class="swatch" data-hl="purple" style="background:#CB9DE0" data-noripple=""></button>
+      <button class="swatch" data-hl="orange" style="background:#F2B291" data-noripple=""></button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-veil" id="noteModal">
+  <div class="modal">
+    <div class="modal-head"><h3>Nota del versículo</h3><button class="mclose" data-noripple=""><i class="fa">&#xf00d;</i></button></div>
+    <textarea class="field" id="noteField" placeholder="Escribe tu nota personal…"></textarea>
+    <div class="btn-row"><button class="btn ghost" id="noteCancel" data-noripple="">Cancelar</button><button class="btn primary" id="noteSave" data-noripple="">Guardar</button></div>
+  </div>
+</div>
+
+<div class="modal-veil" id="searchModal">
+  <div class="modal">
+    <div class="modal-head"><h3>Buscar en la Biblia</h3><button class="mclose" data-noripple=""><i class="fa">&#xf00d;</i></button></div>
+    <div class="search-input"><i class="fa">&#xf002;</i><input id="searchInput" placeholder="Palabra o frase (mín. 3 letras)…" autocomplete="off"><button class="btn primary" id="searchDone" data-noripple="">Buscar</button></div>
+    <div id="searchResults"></div>
+  </div>
+</div>
+
+<div class="modal-veil" id="fontModal">
+  <div class="modal">
+    <div class="modal-head"><h3>Apariencia del texto</h3><button class="mclose" data-noripple=""><i class="fa">&#xf00d;</i></button></div>
+    <div class="size-row">
+      <button class="navbtn" id="sizeMinus" data-noripple=""><i class="fa">&#xf068;</i></button>
+      <span class="size-num" id="sizeNum">19</span>
+      <button class="navbtn" id="sizePlus" data-noripple=""><i class="fa">&#xf067;</i></button>
+      <span style="color:var(--muted);font-size:12.5px;margin-left:6px">Tamaño del texto</span>
+    </div>
+    <h4 style="margin:16px 0 8px;color:var(--ink)">Letra del versículo</h4>
+    <div class="font-grid">
+      <button class="font-card" data-font="default" data-css="Georgia, 'Segoe UI', serif" data-noripple=""><div class="sample" style="font-family:Georgia,serif">Alfa y Omega</div><div class="name">Predeterminada</div></button>
+      <button class="font-card" data-font="greatvibes" data-css="'LBS GreatVibes', Georgia, serif" data-noripple=""><div class="sample" style="font-family:'LBS GreatVibes',Georgia,serif">Alfa y Omega</div><div class="name">Letra de carta</div></button>
+      <button class="font-card" data-font="dancing" data-css="'LBS Dancing', Georgia, serif" data-noripple=""><div class="sample" style="font-family:'LBS Dancing',Georgia,serif">Alfa y Omega</div><div class="name">Manuscrita</div></button>
+      <button class="font-card" data-font="caveat" data-css="'LBS Caveat', Georgia, serif" data-noripple=""><div class="sample" style="font-family:'LBS Caveat',Georgia,serif">Alfa y Omega</div><div class="name">Desenfadada</div></button>
+      <button class="font-card" data-font="playfair" data-css="'LBS Playfair', Georgia, serif" data-noripple=""><div class="sample" style="font-family:'LBS Playfair',Georgia,serif">Alfa y Omega</div><div class="name">Elegante</div></button>
+      <button class="font-card" data-font="oswald" data-css="'LBS Oswald', sans-serif" data-noripple=""><div class="sample" style="font-family:'LBS Oswald',sans-serif">Alfa y Omega</div><div class="name">Moderna</div></button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-veil" id="settingsModal">
+  <div class="modal modal-wide">
+    <div class="modal-head"><h3>Ajustes</h3><button class="mclose" data-noripple=""><i class="fa">&#xf00d;</i></button></div>
+
+    <div class="set-block">
+      <div class="set-title">Versión de la Biblia</div>
+      <div id="setVersions"></div>
+    </div>
+
+    <div class="set-block">
+      <div class="set-title">Tema</div>
+      <div class="seg" id="setTheme">
+        <button class="seg-btn" data-theme="system" data-noripple="">Sistema</button>
+        <button class="seg-btn" data-theme="light" data-noripple="">Claro</button>
+        <button class="seg-btn" data-theme="dark" data-noripple="">Oscuro</button>
+      </div>
+    </div>
+
+    <div class="set-block">
+      <div class="set-title">Tamaño del texto</div>
+      <div class="slider-row">
+        <span class="sA">A−</span>
+        <input type="range" id="setSizeSlider" min="13" max="34" step="1">
+        <span class="sA">A+</span>
+        <span class="sVal" id="setSizeVal">19</span>
+      </div>
+    </div>
+
+    <div class="set-block about-card">
+      <div class="about-name">La Biblia Sv</div>
+      <div class="about-desc">Biblia completa: RV1960 · NTV · NVI · PDT</div>
+      <div class="powered">POWERED BY AGDALA 2026</div>
+      <button class="copy-chip" data-copy="agdala.sv@gmail.com" data-noripple=""><i class="fa">&#xf0e0;</i> agdala.sv@gmail.com<span class="copy-hint">tocar para copiar</span></button>
+      <div class="coffee"><i class="fa">&#xf0f4;</i> Invita a una taza de café</div>
+      <button class="copy-chip btc" data-copy="35qS9dKvT2qZh7ALnZfWp8vJyF7Q3JXNi" data-noripple=""><span class="btc-sym">&#8383;</span> 35qS9dKvT2qZh7ALnZfWp8vJyF7Q3JXNi<span class="copy-hint">tocar para copiar</span></button>
+    </div>
+  </div>
+</div>
+
+<div id="snack"></div>
+<script>__JS__</script>
+</body>
+</html>
