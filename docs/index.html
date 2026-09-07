@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Biblia Sv — Descargar para Linux</title>
+<meta name="description" content="Lector de la Biblia para Linux Mint, Ubuntu, Debian y derivadas. RV1960, NTV, NVI y PDT con interfaz Material Design.">
+<meta property="og:title" content="La Biblia Sv — Descargar">
+<meta property="og:description" content="Lector de la Biblia para Linux: RV1960, NTV, NVI y PDT.">
+<meta property="og:image" content="img/banner.png">
+<style>
+:root{
+  --primary:#6C4CF1; --primary2:#7C4DFF; --deep:#4B2E9F;
+  --accent:#FFC94D; --ink:#1e2331; --text:#3a4152; --muted:#6b7385;
+  --bg:#f5f2fc; --surface:#ffffff; --line:rgba(108,76,241,.16);
+  --shadow:0 14px 34px rgba(76,47,150,.16); --shadow-sm:0 6px 18px rgba(76,47,150,.12);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Segoe UI",system-ui,Roboto,sans-serif;color:var(--text);background:linear-gradient(180deg,#efeaff 0%,var(--bg) 40%,#f7f4ec 100%);background-attachment:fixed;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* header */
+.top{background:#1b1530;color:#fff}
+.topbar{display:flex;align-items:center;gap:12px;padding:14px 22px;max-width:1060px;margin:0 auto}
+.topbar img{width:38px;height:38px;border-radius:10px}
+.topbar b{font-family:Georgia,serif;font-size:18px;color:#fff}
+.topbar .tag{margin-left:auto;font-size:12px;color:#b9aef0;letter-spacing:.12em;text-transform:uppercase}
+
+/* hero */
+.hero{text-align:center;padding:34px 0 8px}
+.hero img.banner{width:100%;max-width:980px;border-radius:22px;box-shadow:var(--shadow)}
+.cta{margin:26px 0 6px}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--primary2),var(--deep));color:#fff;font-weight:800;font-size:17px;padding:16px 34px;border-radius:999px;box-shadow:0 14px 34px rgba(76,47,150,.4);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 20px 44px rgba(76,47,150,.5);text-decoration:none}
+.btn small{display:block;font-weight:600;font-size:12px;opacity:.85}
+.distros{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px 0 8px}
+.distro{background:var(--surface);border:1px solid var(--line);color:var(--ink);font-weight:700;font-size:13px;padding:8px 16px;border-radius:999px;box-shadow:var(--shadow-sm)}
+
+/* sections */
+section{background:var(--surface);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow-sm);padding:28px 30px;margin:26px 0}
+h2{color:var(--ink);font-family:Georgia,serif;font-size:24px;margin:0 0 6px}
+h2 .hl{background:linear-gradient(135deg,var(--primary2),var(--deep));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.lead{color:var(--muted);margin:0 0 18px}
+code{background:#f1ecff;color:var(--deep);border:1px solid var(--line);border-radius:8px;padding:2px 7px;font-size:.95em}
+pre{background:#17122b;color:#e2dbff;border-radius:14px;padding:18px 20px;overflow:auto;font-size:13.5px;line-height:1.6}
+pre b{color:#ffd97a}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--primary);font-size:12.5px;text-transform:uppercase;letter-spacing:.08em}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+.fcard{background:#faf8ff;border:1px solid var(--line);border-radius:18px;padding:20px}
+.fcard .ic{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--primary2),var(--deep));display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;box-shadow:var(--shadow-sm);margin-bottom:12px}
+.fcard b{color:var(--ink);display:block;margin-bottom:5px}
+.fcard p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.5}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
+.up-card{background:#faf8ff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-sm)}
+.up-card img{width:100%;display:block}
+.up-card .cap{padding:12px 16px;font-size:13.5px;color:var(--muted)}
+.up-card .cap b{color:var(--ink)}
+.sticker{grid-column:1 / -1;max-width:560px;justify-self:center}
+
+/* footer */
+footer{background:#1b1530;color:#cdc6f2;text-align:center;padding:30px 22px;margin-top:30px;font-size:14px}
+footer .pw{color:var(--accent);font-weight:900;letter-spacing:.16em;font-size:13px}
+footer .mail{color:#fff}
+footer .btc{font-family:monospace;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:8px 14px;margin:10px auto 0;display:inline-block;font-size:13px;word-break:break-all}
+
+@media(max-width:760px){
+  .feat{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr}
+  section{padding:22px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="topbar">
+    <img src="img/logo.png" alt="La Biblia Sv">
+    <b>La Biblia Sv</b>
+    <span class="tag">Linux · Mint · Ubuntu · Debian</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <img class="banner" src="img/banner.png" alt="La Biblia Sv — Biblia completa para Linux">
+    <div class="cta">
+      <a class="btn" href="https://github.com/masterhdez/LaBibliaSv/releases/latest/download/la-biblia-sv_1.0.0_amd64.deb" download>
+        Descargar .deb (7,6 MB)
+        <small>la-biblia-sv_1.0.0_amd64.deb</small>
+      </a>
+    </div>
+    <div class="distros">
+      <span class="distro">Linux Mint</span>
+      <span class="distro">Ubuntu</span>
+      <span class="distro">Debian</span>
+      <span class="distro">Distribuciones derivadas</span>
+    </div>
+  </div>
+
+  <section>
+    <h2><span class="hl">Instalación</span> en dos pasos</h2>
+    <p class="lead">Descarga el paquete e instálalo con el gestor de paquetes. El icono de la app aparece automáticamente en el menú.</p>
+    <pre><b># 1. Descarga</b>
+wget -c https://github.com/masterhdez/LaBibliaSv/releases/latest/download/la-biblia-sv_1.0.0_amd64.deb
+
+<b># 2. Instala</b>
+sudo apt install ./la-biblia-sv_1.0.0_amd64.deb
+
+<b># Listo — abre "La Biblia Sv" desde el menú</b>
+la-biblia-sv
+
+<b># Para desinstalar</b>
+sudo apt remove la-biblia-sv</pre>
+    <p style="color:var(--muted);font-size:13.5px">Dependencias necesarias (se instalan automáticamente): <code>python3</code>, <code>python3-gi</code>, <code>gir1.2-gtk-3.0</code>, <code>gir1.2-pango-1.0</code>, <code>python3-cairo</code> y <code>gir1.2-webkit2-4.1</code> (o <code>4.0</code>).</p>
+  </section>
+
+  <section>
+    <h2>Características</h2>
+    <div class="feat">
+      <div class="fcard"><div class="ic">📖</div><b>4 versiones</b><p>Reina-Valera 1960, NTV, NVI y PDT con conmutación instantánea.</p></div>
+      <div class="fcard"><div class="ic">🎨</div><b>Material Design</b><p>Interfaz estilo Android: sombras, animaciones, ripples, modo oscuro e iconos Font Awesome.</p></div>
+      <div class="fcard"><div class="ic">🔍</div><b>Búsqueda ágil</b><p>Busca palabras o frases con enlace directo al versículo.</p></div>
+      <div class="fcard"><div class="ic">✨</div><b>Resaltar y notas</b><p>6 colores de resaltado y notas personales por versículo, guardadas en la app.</p></div>
+      <div class="fcard"><div class="ic">🔖</div><b>Marcadores</b><p>Guarda y navega tus versículos favoritos.</p></div>
+      <div class="fcard"><div class="ic">🖼️</div><b>Stickers</b><p>Crea stickers con imagen de fondo, letra de carta y guárdalos en PNG.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="hl">Galería</span> de la app</h2>
+    <p class="lead">La misma experiencia visual que la app Android, en tu escritorio Linux.</p>
+    <div class="gallery">
+      <div class="up-card"><img src="img/01-lectura.png" alt="Lectura de Génesis"><div class="cap"><b>Lectura</b> — navegación por capítulos y versículos con tipografía elegante.</div></div>
+      <div class="up-card"><img src="img/05-oscuro.png" alt="Modo oscuro"><div class="cap"><b>Modo oscuro</b> — tema Sistema / Claro / Oscuro en Ajustes.</div></div>
+      <div class="up-card"><img src="img/03-busqueda.png" alt="Búsqueda"><div class="cap"><b>Búsqueda</b> — resultados enlazados al versículo exacto.</div></div>
+      <div class="up-card"><img src="img/02-ajustes.png" alt="Ajustes"><div class="cap"><b>Ajustes</b> — versión, tema, tamaño de texto y créditos.</div></div>
+      <div class="up-card"><img src="img/04-letras.png" alt="Letras del versículo"><div class="cap"><b>Letra del versículo</b> — incluye letra de carta, manuscrita y 6 tipografías.</div></div>
+      <div class="up-card sticker"><img src="img/07-sticker.png" alt="Generador de stickers"><div class="cap"><b>Stickers</b> — color, imagen de fondo, tamaño y guardado en PNG.</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Detalles</h2>
+    <table>
+      <tr><th>Paquete</th><td><code>la-biblia-sv</code> · <code>la-biblia-sv_1.0.0_amd64.deb</code></td></tr>
+      <tr><th>Arquitectura</th><td>amd64 (x86_64)</td></tr>
+      <tr><th>Versiones de la Biblia</th><td>RV1960 · NTV · NVI · PDT</td></tr>
+      <tr><th>Tipografías</th><td>Letra de carta, manuscrita, desenfadada, elegante y moderna (incluidas)</td></tr>
+      <tr><th>Atajos</th><td><code>F11</code> — pantalla completa · <code>⛶</code> — alternar</td></tr>
+    </table>
+  </section>
+
+</div>
+
+<footer>
+  <div class="pw">POWERED BY AGDALA 2026</div>
+  <p style="margin:8px 0 0">Contacto: <a class="mail" href="mailto:agdala.sv@gmail.com">agdala.sv@gmail.com</a></p>
+  <p style="margin:10px 0 0">☕ Invita a una taza de café — Bitcoin</p>
+  <span class="btc">35qS9dKvT2qZh7ALnZfWp8vJyF7Q3JXNi</span>
+</footer>
+
+</body>
+</html>
